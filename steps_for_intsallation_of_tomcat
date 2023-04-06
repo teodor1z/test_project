@@ -1,0 +1,48 @@
+java -version
+
+sudo yum install java-1.8.0-openjdk-devel
+
+cd /opt
+
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.56/bin/apache-tomcat-9.0.56.tar.gz .
+
+tar -xzvf $tomcatversion
+
+sudo chown -R tomcat:tomcat /opt/tomcat
+
+vim /etc/systemd/system/tomcat.service
+
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=network.target
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=tomcat
+Group=tomcat
+Environment="JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.el7_9.x86_64/"
+Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom -Djava.awt.headless=true"
+Environment="CATALINA_BASE=/opt/tomcat"
+Environment="CATALINA_HOME=/opt/tomcat"
+Environment="CATALINA_PID=/opt/tomcat/temp/tomcat.pid"
+Environment="CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC"
+ExecStart=/opt/tomcat/bin/startup.sh                                           #####CHNAGE THE PATH OR THE tomcat file depending on your needs
+ExecStop=/opt/tomcat/bin/shutdown.sh.                                          #####CHNAGE THE PATH OR THE tomcat file depending on your needs
+[Install]
+WantedBy=multi-user.target
++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++
+++++++++++++++++++++
+sudo systemctl daemon-reload
+
+5. Set the Tomcat service to start on boot:
+
+sudo systemctl enable tomcat
+
+6. Start the Tomcat service:
+
+sudo systemctl start tomcat
+
+7. Verify that the Tomcat service is installed and running:
+
+sudo systemctl status tomcat
