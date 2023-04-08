@@ -4,6 +4,7 @@
 
 #### WHAT IF I ADD THIS COMMADS HERE JUST TO SEE
 
+#### NEW FORCE 2 TEST 
 java -version
 
 sudo yum install java-1.8.0-openjdk-devel
