@@ -2,6 +2,8 @@
 
 ####new-comment######
 
+#### WHAT IF I ADD THIS COMMADS HERE JUST TO SEE
+
 java -version
 
 sudo yum install java-1.8.0-openjdk-devel
