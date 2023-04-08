@@ -8,6 +8,7 @@
 
 #### FORCE 3 "TEST TO SEE HOW TO CREAT PULL REQUEST FOR MERGENG" 
 
+##### FORCE 4 LAST TEST OF THE DAY
 java -version
 
 sudo yum install java-1.8.0-openjdk-devel
